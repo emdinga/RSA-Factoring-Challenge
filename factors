@@ -1,27 +1,31 @@
-import sys
+#!/usr/bin/python3
+from sys import argv
 
-def factorize(number):
-    for i in range(2, int(number**0.5) + 1):
-        if number % i == 0:
-            return i, number // i
-    return None
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: factors <file>")
+def factorize(num):
+
+    i = 2
+
+    if value < 2:
         return
+    print()
+    print(num, "<- value-bef")
+    while num % i:
+        i += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(num, num / i, i))
+    print(num, "<- value-aft")
+    print()
 
-    filename = sys.argv[1]
+if len(argv) != 2:
+    exit()
 
-    try:
-        with open(filename, 'r') as file:
-            for line in file:
-                number = int(line.strip())
-                factors = factorize(number)
-                if factors:
-                    print(f"{number}={factors[0]}*{factors[1]}")
-    except FileNotFoundError:
-        print(f"File '{filename}' not found.")
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
 
-if __name__ == "__main__":
-    main()
+        while line != "":
+            value = int(line.split('\n')[0])
+            factorize(num)
+            line = file.readline()
+except:
+    pass
